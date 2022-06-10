@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body style="background-color:red
+;">
+<a href="2.html">CINIMAX</a>
+	<meta charset="UTF-8">
+
+<div id="itens"> </div>
+<div>Total: <span id="total"></span> </div>
+
+<script>
+ var total = 0; // variável que retorna o total dos produtos que estão na LocalStorage.
+ var i = 0;     // variável que irá percorrer as posições
+ var valor = 0; // variável que irá receber o preço do produto convertido em Float.
+ 
+ for(i=1; i<=99; i++) // verifica até 99 produtos registrados na localStorage
+ {
+	 var prod = localStorage.getItem("produto" + i + ""); // verifica se há recheio nesta posição. 
+	 if(prod != null) 
+	 {	
+		 // exibe os dados da lista dentro da div itens
+		 document.getElementById("itens").innerHTML += localStorage.getItem("qtd" + i) + " x ";
+		 document.getElementById("itens").innerHTML += localStorage.getItem("produto" + i);
+		 document.getElementById("itens").innerHTML += " ";
+		 document.getElementById("itens").innerHTML += "R$: " + localStorage.getItem("valor" + i) + "<hr>";
+		 
+		 // calcula o total dos recheios
+		 valor = parseFloat(localStorage.getItem("valor" + i)); // valor convertido com o parseFloat()
+		 total = (total + valor); // arredonda para 2 casas decimais com o .toFixed(2)
+	 }
+ } 
+ // exibe o total dos recheios
+ document.getElementById("total").innerHTML = total.toFixed(2); 
+</script>
+
+<button type="button" onclick=" localStorage.clear(); location.reload();"> Limpar carrinho </button>
+<div class="container col-6">
+	<div class="row p-3 justify-content-center">
+		<div class="col-6  align-content-center">
+			<div class="form-check pb-4">
+				<input class="form-check-input" type="radio" name="flexRadioDefault" id="ipt1" onclick="if(document.getElementById('av').disabled==true){
+				   document.getElementById('av').disabled=true, document.getElementById('card').disabled = true, document.getElementById('card').value = ''
+				}
+				">
+				<label class="form-check-label" for="flexRadioDefault1">
+					À vista
+				</label>
+			</div>
+			<br><br>
+			<div class="form-check pt-2">
+				<input class="form-check-input" type="radio" name="flexRadioDefault" id="ipt2" onclick="if(document.getElementById('card').disabled = true){
+					document.getElementById('card').disabled = false,
+					document.getElementById('av').disabled=true
+				}">
+				<label class="form-check-label" for="flexRadioDefault2">
+					Cartão de crédito
+				</label>
+			</div>
+		</div>
+		<div class="col-6">
+			<input class="form-control" type="text" name="av" id="av" disabled="">
+			<br><br>
+			<select class="form-select" aria-label="Default select example" disabled="" id="card"
+				onchange="parcelado()">
+				<option selected="" value="Parcelas">Parcelas</option>
+				<option value="2" id="dois">2</option>
+				<option value="3" id="tres">3</option>
+				<option value="4" id="quatro">4</option>
+			</select>
+			<input class="form-control mt-1" type="text" name="" id="Guimaraes" placeholder="Valor Parcelado "
+			disabled>
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+
+<script src="script044.js"></script>
+</html>
+
+
+
+
+
+</div>
+
+
+</body>
+</html>
